@@ -35,7 +35,6 @@
       min-height: 100vh;
     }
 
-    /* grain overlay */
     body::after {
       content: '';
       position: fixed;
@@ -47,164 +46,183 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ── TICKER BAR ── */
-    .ticker {
-      background: var(--accent);
-      padding: 7px 0;
-      overflow: hidden;
-    }
-    .ticker-inner {
-      display: flex;
-      gap: 64px;
-      white-space: nowrap;
-      animation: ticker 28s linear infinite;
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-    }
-    .ticker-inner span { flex-shrink: 0; }
-    .ticker-inner span::before { content: '◆ '; opacity: 0.6; }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
     /* ── MASTHEAD ── */
     .masthead {
       border-bottom: 1px solid var(--rule-bright);
-      padding: 0 48px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      padding: 0 56px;
+      display: flex;
       align-items: center;
+      justify-content: center;
       min-height: 80px;
-      gap: 24px;
       animation: fadeIn 0.6s ease both;
     }
 
-    .masthead-nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-    .masthead-nav a {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      transition: color 0.2s;
-      position: relative;
-    }
-    .masthead-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 1px;
-      background: var(--accent);
-      transition: width 0.2s;
-    }
-    .masthead-nav a:hover { color: var(--ink); }
-    .masthead-nav a:hover::after { width: 100%; }
-
-    .masthead-title {
-      text-align: center;
-    }
     .masthead-title h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink);
     }
-    .masthead-title h1 em { color: var(--accent); font-style: normal; }
-
-    .masthead-right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 16px;
-    }
-    .masthead-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: var(--ink-dim);
-    }
-    .subscribe-btn {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .masthead-title h1 em {
       color: var(--accent);
-      border: 1px solid var(--accent-dim);
-      padding: 6px 14px;
-      transition: all 0.2s;
+      font-style: normal;
     }
-    .subscribe-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
-    /* ── HERO BANNER ── */
-    .hero-banner {
+    /* ── MISSION BAND ── */
+    .mission-band {
       border-bottom: 1px solid var(--rule-bright);
-      padding: 72px 48px 64px;
+      padding: 56px 56px 52px;
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 64px;
-      align-items: start;
+      grid-template-columns: 1fr 320px;
+      gap: 80px;
+      align-items: center;
       animation: fadeUp 0.7s 0.1s ease both;
     }
 
-    .hero-tag {
+    .mission-statement {
+      max-width: 620px;
+    }
+
+    .mission-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.25em;
+      font-size: 9px;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
+    }
+
+    .mission-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    /* ── AUTHOR SIDEBAR ── */
+    .author-sidebar {
+      border-left: 1px solid var(--rule-bright);
+      padding-left: 48px;
+    }
+
+    .author-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 14px;
+    }
+
+    .author-bio {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--ink-dim);
+      line-height: 1.75;
+    }
+
+    /* ── ESSAY SECTION ── */
+    .essay-section {
+      padding: 56px 56px 0;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .section-marker {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .section-marker::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── FEATURED ESSAY ── */
+    .featured-essay {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+      border-top: 1px solid var(--rule-bright);
+      border-bottom: 1px solid var(--rule-bright);
+    }
+
+    .essay-main {
+      padding: 48px 56px 48px 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .essay-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .hero-tag::before {
+    .essay-tag::before {
       content: '';
       display: inline-block;
-      width: 24px; height: 1px;
+      width: 20px;
+      height: 1px;
       background: var(--accent);
     }
 
-    .hero-headline {
+    .essay-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 5vw, 62px);
-      font-weight: 600;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.01em;
       color: var(--ink);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+      transition: color 0.2s;
     }
-    .hero-headline em { font-style: italic; color: #c8bfa8; }
+    .essay-title:hover { color: #c8bfa8; }
 
-    .hero-dek {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 16px;
+    .essay-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink-dim);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .essay-dek {
+      font-size: 15px;
       font-style: italic;
       color: var(--ink-dim);
       line-height: 1.75;
-      max-width: 560px;
+      max-width: 520px;
       margin-bottom: 28px;
     }
 
-    .hero-meta {
+    .essay-meta {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.08em;
-      color: var(--ink-dim);
+      color: var(--ink-faint);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
+      margin-bottom: 24px;
     }
-    .hero-meta .dot { color: var(--rule-bright); }
+    .essay-meta .dot { color: var(--rule-bright); }
 
     .read-link {
       font-family: 'DM Mono', monospace;
@@ -215,319 +233,74 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 20px;
       transition: gap 0.2s;
     }
     .read-link:hover { gap: 12px; }
 
-    /* ── HERO SIDEBAR ── */
-    .hero-sidebar {
-      border-left: 1px solid var(--rule-bright);
-      padding-left: 48px;
-      padding-top: 8px;
-    }
-
-    .sidebar-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    .sidebar-item {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .sidebar-item:last-child { border-bottom: none; }
-
-    .sidebar-item-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .sidebar-item h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--ink);
-      transition: color 0.2s;
-    }
-    .sidebar-item h4 a:hover { color: #c8bfa8; }
-    .sidebar-item .mini-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--ink-dim);
-      margin-top: 4px;
-    }
-
-    /* ── CONTAINER ── */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    /* ── SECTION HEADER ── */
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 32px 0 0;
-      border-bottom: 1px solid var(--rule-bright);
-      margin-bottom: 0;
-    }
-    .section-header-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      padding-bottom: 12px;
-    }
-    .section-header-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-      margin: 0 20px;
-      margin-bottom: 12px;
-    }
-    .section-header-count {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--ink-faint);
-      padding-bottom: 12px;
-    }
-
-    /* ── POST GRID ── */
-    .post-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 1px solid var(--rule-bright);
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-
-    .post-card {
-      padding: 36px 32px;
-      border-right: 1px solid var(--rule);
-      transition: background 0.2s;
-    }
-    .post-card:hover { background: var(--highlight); }
-    .post-card:last-child { border-right: none; }
-
-    .post-card-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .post-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--ink);
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-    .post-card:hover h3 { color: #c8bfa8; }
-
-    .post-card p {
-      font-size: 13.5px;
-      color: var(--ink-dim);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-
-    .post-card-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--ink-faint);
-      display: flex;
-      gap: 12px;
-    }
-
-    /* ── ARGUMENT STRIP ── */
-    .argument-strip {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      gap: 0;
-      border-bottom: 1px solid var(--rule-bright);
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
-
-    .argument-index {
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .argument-main {
-      padding: 48px 48px 48px 40px;
-      border-right: 1px solid var(--rule);
-    }
-
-    .argument-main h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 34px;
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--ink);
-      margin-bottom: 16px;
-    }
-    .argument-main h2 a:hover { color: #c8bfa8; transition: color 0.2s; }
-
-    .argument-main .dek {
-      font-size: 15px;
-      font-style: italic;
-      color: var(--ink-dim);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-
-    .argument-pull {
-      padding: 48px 40px;
+    /* ── ESSAY PULL SIDEBAR ── */
+    .essay-pull {
+      padding: 48px 0 48px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: var(--surface);
     }
 
     .pull-mark {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 72px;
+      font-size: 64px;
       line-height: 0.7;
       color: var(--accent);
-      margin-bottom: 16px;
-      opacity: 0.6;
+      opacity: 0.5;
+      margin-bottom: 14px;
     }
 
     .pull-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-size: 19px;
       font-style: italic;
       font-weight: 500;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--ink);
       border-left: 2px solid var(--accent);
-      padding-left: 20px;
+      padding-left: 18px;
     }
 
     .pull-source {
       font-family: 'DM Mono', monospace;
       font-size: 9px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--ink-dim);
-      margin-top: 14px;
-      padding-left: 22px;
+      margin-top: 12px;
+      padding-left: 20px;
     }
 
-    /* ── OPINION ROW ── */
-    .opinion-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      border-bottom: 1px solid var(--rule-bright);
-      animation: fadeUp 0.7s 0.4s ease both;
-    }
-
-    .opinion-card {
-      padding: 36px 40px;
-      border-right: 1px solid var(--rule);
-      position: relative;
-    }
-    .opinion-card:last-child { border-right: none; }
-    .opinion-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
-    .opinion-card:hover::before { width: 100%; }
-
-    .opinion-card-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: var(--ink-faint);
-      margin-bottom: 12px;
-    }
-
-    .opinion-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-    .opinion-card h3 a:hover { color: #c8bfa8; transition: color 0.2s; }
-
-    .opinion-card p {
-      font-size: 14px;
-      font-style: italic;
-      color: var(--ink-dim);
-      line-height: 1.7;
-    }
-
-    /* ── ABOUT STRIP ── */
-    .about-strip {
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--rule-bright);
-      padding: 56px 80px;
+    /* ── SUBSCRIBE ── */
+    .subscribe-section {
+      padding: 56px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
-      animation: fadeUp 0.7s 0.5s ease both;
+      border-bottom: 1px solid var(--rule-bright);
+      animation: fadeUp 0.7s 0.3s ease both;
     }
 
-    .about-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    .about-strip h2 {
+    .subscribe-copy h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-size: 28px;
       font-weight: 600;
       font-style: italic;
-      line-height: 1.25;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
 
-    .about-strip p {
-      font-size: 15px;
-      color: var(--ink-dim);
-      line-height: 1.8;
+    .subscribe-copy p {
+      font-size: 14px;
       font-style: italic;
+      color: var(--ink-dim);
+      line-height: 1.75;
     }
 
     .email-form {
@@ -535,8 +308,9 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .email-form input {
-      background: var(--bg);
+      background: var(--surface);
       border: 1px solid var(--rule-bright);
       color: var(--ink);
       padding: 13px 18px;
@@ -548,6 +322,7 @@
     }
     .email-form input::placeholder { color: var(--ink-faint); }
     .email-form input:focus { border-color: var(--accent); }
+
     .email-form button {
       background: var(--accent);
       border: none;
@@ -562,22 +337,19 @@
     }
     .email-form button:hover { background: #a02d22; }
 
-    .about-note {
+    .form-note {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
       color: var(--ink-faint);
       letter-spacing: 0.08em;
-      margin-top: 10px;
     }
 
     /* ── FOOTER ── */
     footer {
-      padding: 40px 48px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      padding: 32px 56px;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      border-top: 1px solid var(--rule);
     }
 
     .footer-copy {
@@ -587,238 +359,112 @@
       letter-spacing: 0.1em;
     }
 
-    .footer-title {
-      text-align: center;
+    .footer-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-dim);
     }
-    .footer-title span { color: var(--accent); }
-
-    .footer-links {
-      display: flex;
-      justify-content: flex-end;
-      gap: 24px;
-    }
-    .footer-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
+    .footer-logo em { color: var(--accent); font-style: normal; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .masthead { padding: 0 20px; grid-template-columns: 1fr auto; }
-      .masthead-right { display: none; }
-      .hero-banner { grid-template-columns: 1fr; padding: 40px 20px; gap: 40px; }
-      .hero-sidebar { border-left: none; border-top: 1px solid var(--rule-bright); padding-left: 0; padding-top: 32px; }
-      .container { padding: 0 20px; }
-      .post-grid { grid-template-columns: 1fr; }
-      .post-card { border-right: none; border-bottom: 1px solid var(--rule); }
-      .argument-strip { grid-template-columns: 48px 1fr; }
-      .argument-pull { display: none; }
-      .opinion-row { grid-template-columns: 1fr; }
-      .opinion-card { border-right: none; border-bottom: 1px solid var(--rule); }
-      .about-strip { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
-      footer { grid-template-columns: 1fr; padding: 32px 20px; gap: 16px; }
-      .footer-title, .footer-links { text-align: left; justify-content: flex-start; }
+    @media (max-width: 860px) {
+      .masthead { padding: 0 24px; }
+      .mission-band { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
+      .author-sidebar { border-left: none; border-top: 1px solid var(--rule-bright); padding-left: 0; padding-top: 32px; }
+      .essay-section { padding: 40px 24px 0; }
+      .featured-essay { grid-template-columns: 1fr; }
+      .essay-main { padding: 40px 0; border-right: none; border-bottom: 1px solid var(--rule); }
+      .essay-pull { padding: 32px 0; }
+      .subscribe-section { grid-template-columns: 1fr; padding: 40px 24px; gap: 32px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      <span>The Purity Trap</span>
-      <span>On Progressive Contradiction</span>
-      <span>Generational Politics</span>
-      <span>Foreign Policy Analysis</span>
-      <span>Outside the System</span>
-      <span>Independent Commentary</span>
-      <span>The Purity Trap</span>
-      <span>On Progressive Contradiction</span>
-      <span>Generational Politics</span>
-      <span>Foreign Policy Analysis</span>
-      <span>Outside the System</span>
-      <span>Independent Commentary</span>
-    </div>
-  </div>
-
   <!-- MASTHEAD -->
   <header class="masthead">
-    <nav class="masthead-nav">
-      <a href="#">Analysis</a>
-      <a href="#">Opinion</a>
-      <a href="#">Foreign Affairs</a>
-      <a href="#">Archive</a>
-    </nav>
     <div class="masthead-title">
       <h1>Unaffiliated</h1>
     </div>
-    <div class="masthead-right">
-      <span class="masthead-date" id="masthead-date"></span>
-      <a href="#subscribe" class="subscribe-btn">Subscribe</a>
-    </div>
   </header>
 
-  <!-- HERO -->
-  <div class="hero-banner">
-    <div class="hero-main">
-      <div class="hero-tag">Essay No. 001 &nbsp;·&nbsp; Analysis</div>
-      <h2 class="hero-headline"><a href="purity-trap.html">The Purity Trap: <em>On How the Left Forgot What Its Own Ideas Were For</em></a></h2>
-      <p class="hero-dek">Progressive tolerance wasn't a personality trait — it was a philosophy built on the premise that people are imperfect. The machinery that disqualifies candidates for living human lives has forgotten that entirely.</p>
-      <div class="hero-meta">
-        <span id="hero-date"></span>
-        <span class="dot">·</span>
-        <span>~900 words</span>
-        <span class="dot">·</span>
-        <span>12 min read</span>
-      </div>
-      <a href="purity-trap.html" class="read-link">Read the essay →</a>
+  <!-- MISSION + AUTHOR -->
+  <div class="mission-band">
+    <div class="mission-statement">
+      <div class="mission-eyebrow">Purpose</div>
+      <p class="mission-text">Unaffiliated interprets our times, free from allegiance. It's a home for untethered political thought, unexpectedly grounded in a reverence for the very ability to do it at all.</p>
     </div>
-
-    <aside class="hero-sidebar">
-      <div class="sidebar-label">Also on the site</div>
-      <div class="sidebar-item">
-        <div class="sidebar-item-tag">Foreign Affairs</div>
-        <h4><a href="#">Gulf Dynamics After the Abraham Accords: A Realistic Assessment</a></h4>
-        <div class="mini-meta">Mar 19 &nbsp;·&nbsp; 10 min</div>
-      </div>
-      <div class="sidebar-item">
-        <div class="sidebar-item-tag">Policy</div>
-        <h4><a href="#">What the Budget Framework Actually Does to Discretionary Spending</a></h4>
-        <div class="mini-meta">Mar 25 &nbsp;·&nbsp; 8 min</div>
-      </div>
-      <div class="sidebar-item">
-        <div class="sidebar-item-tag">Opinion</div>
-        <h4><a href="#">Stop Blaming the Court for Problems Congress Created</a></h4>
-        <div class="mini-meta">Mar 22 &nbsp;·&nbsp; 6 min</div>
-      </div>
+    <aside class="author-sidebar">
+      <div class="author-label">The Author</div>
+      <p class="author-bio">The author inhabits legislating institutions without belonging to them. Politically serious, unaffiliated by choice. What's claimed here isn't insider access — it's something less fathomable: the capacity to observe without a clear stake. This is written from that tension.</p>
     </aside>
   </div>
 
-  <div class="container">
-    <div class="section-header">
-      <span class="section-header-label">Recent</span>
-      <div class="section-header-rule"></div>
-      <span class="section-header-count">Vol. I</span>
-    </div>
+  <!-- ESSAY -->
+  <section class="essay-section">
+    <div class="section-marker">Essays</div>
 
-    <div class="post-grid">
-      <article class="post-card">
-        <div class="post-card-tag">Domestic · Congress</div>
-        <h3><a href="#">The Realignment That Wasn't</a></h3>
-        <p>Everyone walked away from November with a mandate. Almost no one had one.</p>
-        <div class="post-card-meta"><span>Mar 28</span><span>·</span><span>12 min</span></div>
-      </article>
-      <article class="post-card">
-        <div class="post-card-tag">Institutions</div>
-        <h3><a href="#">The Filibuster Debate Has No Heroes Left</a></h3>
-        <p>Both parties' positions are best understood as pure self-interest dressed in constitutional language.</p>
-        <div class="post-card-meta"><span>Mar 22</span><span>·</span><span>6 min</span></div>
-      </article>
-      <article class="post-card">
-        <div class="post-card-tag">Media</div>
-        <h3><a href="#">Why Political Journalism Keeps Getting the Story Wrong</a></h3>
-        <p>It's not bias. It's a structural incentive problem that rewards speed over accuracy.</p>
-        <div class="post-card-meta"><span>Mar 18</span><span>·</span><span>7 min</span></div>
-      </article>
-    </div>
-
-    <div class="section-header">
-      <span class="section-header-label">Featured Argument</span>
-      <div class="section-header-rule"></div>
-    </div>
-  </div>
-
-  <!-- ARGUMENT STRIP (full bleed) -->
-  <div class="argument-strip">
-    <div class="argument-index">Featured Essay</div>
-    <div class="argument-main">
-      <div class="post-card-tag" style="margin-bottom:16px;">Long Read &nbsp;·&nbsp; Generations &amp; Politics</div>
-      <h2><a href="#">The Millennials Who Stopped Believing in the System — and What They Built Instead</a></h2>
-      <p class="dek">A generation shaped by two financial crises, a pandemic, and a sustained disillusionment with institutional politics didn't disengage. They just stopped playing by the old rules. This is what that looks like from outside it.</p>
-      <div class="hero-meta" style="margin-bottom:20px;">
-        <span>March 15, 2026</span>
-        <span class="dot" style="color:var(--rule-bright)">·</span>
-        <span>18 min read</span>
+    <div class="featured-essay">
+      <div class="essay-main">
+        <div class="essay-tag">Essay No. 001 &nbsp;·&nbsp; Analysis</div>
+        <a href="purity-trap.html">
+          <h2 class="essay-title">The Purity Trap</h2>
+        </a>
+        <p class="essay-subtitle">On how the left forgot what its own ideas were for</p>
+        <p class="essay-dek">Progressive tolerance wasn't a personality trait — it was a philosophy built on the premise that people are imperfect. The machinery that disqualifies candidates for having lived human lives has forgotten that entirely.</p>
+        <div class="essay-meta">
+          <span id="pub-date"></span>
+          <span class="dot">·</span>
+          <span>~2,000 words</span>
+          <span class="dot">·</span>
+          <span>12 min read</span>
+        </div>
+        <a href="purity-trap.html" class="read-link">Read the essay →</a>
       </div>
-      <a href="#" class="read-link">Read the full essay →</a>
-    </div>
-    <div class="argument-pull">
-      <div class="pull-mark">&ldquo;</div>
-      <p class="pull-text">The sanitized candidate is not produced by high standards. They are produced by a selection process that filters for risk aversion above all else.</p>
-      <div class="pull-source">— From "The Purity Trap"</div>
-    </div>
-  </div>
 
-  <div class="container">
-    <div class="section-header">
-      <span class="section-header-label">Opinion</span>
-      <div class="section-header-rule"></div>
+      <div class="essay-pull">
+        <div class="pull-mark">&ldquo;</div>
+        <p class="pull-text">Purity culture isn't really about standards. It's about control — a power mechanism that wears the costume of ethics.</p>
+        <div class="pull-source">— The Purity Trap</div>
+      </div>
     </div>
+  </section>
 
-    <div class="opinion-row">
-      <article class="opinion-card">
-        <div class="opinion-card-num">01 &nbsp;·&nbsp; Domestic</div>
-        <h3><a href="#">The Bipartisan Failure on Housing Is Now a Crisis</a></h3>
-        <p>Twenty years of zoning cowardice have compounded into something neither party has a serious answer for.</p>
-      </article>
-      <article class="opinion-card">
-        <div class="opinion-card-num">02 &nbsp;·&nbsp; Foreign Policy</div>
-        <h3><a href="#">The Illusion of a Coherent China Strategy</a></h3>
-        <p>Washington talks about China constantly and thinks about it far less carefully than it imagines.</p>
-      </article>
-    </div>
-  </div>
-
-  <!-- ABOUT / SUBSCRIBE -->
-  <div class="about-strip" id="subscribe">
-    <div>
-      <div class="about-label">About this site</div>
-      <h2>Written from outside the system. On purpose.</h2>
-      <p>Independent political commentary. No party line, no institutional affiliation, no obligation to anyone's narrative. New essays when there's something worth saying.</p>
+  <!-- SUBSCRIBE -->
+  <div class="subscribe-section" id="subscribe">
+    <div class="subscribe-copy">
+      <h2>New essays, when there's something worth saying.</h2>
+      <p>No filler, no schedule. Just the argument when it's ready.</p>
     </div>
     <div>
       <div class="email-form">
         <input type="email" placeholder="your@email.com" id="email-input" />
         <button type="button" id="sub-btn">Get new essays →</button>
       </div>
-      <div class="about-note">No filler. Unsubscribe whenever.</div>
+      <p class="form-note" style="margin-top:10px;">Unsubscribe whenever.</p>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-copy">© 2026 &nbsp;·&nbsp; All rights reserved</div>
-    <div class="footer-title">Unaffiliated</div>
-    <nav class="footer-links">
-      <a href="#">About</a>
-      <a href="#">Archive</a>
-      <a href="#">Contact</a>
-    </nav>
+    <div class="footer-copy">© 2026 &nbsp;·&nbsp; Unaffiliated &nbsp;·&nbsp; All rights reserved</div>
+    <div class="footer-logo">Unaffiliated</div>
   </footer>
 
   <script>
-    const d = new Date();
-    const fmt = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('masthead-date').textContent = d.toLocaleDateString('en-US', fmt);
-    document.getElementById('hero-date').textContent = d.toLocaleDateString('en-US', fmt);
+    document.getElementById('pub-date').textContent =
+      new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
     document.getElementById('sub-btn').addEventListener('click', function () {
       const input = document.getElementById('email-input');
